@@ -16,14 +16,21 @@ type Organism interface {
 Once you do that you can generate a species using your organism and breed it to an optimal solution. An example organism BinaryOrganism has been provided for testing:
 
 ```go
-create := func() Organism {
+//Define a function that can create Organisms
+createOrganism := func() Organism { 
 	return NewBinaryOrganism()
 }
-s := NewSpecies(create, 20)
-strongest := s.GetStrongest(2)
-s.Breed(strongest, 20)
-for i := 0; i < 40; i++ {
+//Create a species of 20 members
+s := NewSpecies(createOrganism, 20) 
+//Get the strongest 2
+strongest := s.GetStrongest(2) 
+//Bread the species from the 2 strongest viable members
+s.Breed(strongest, 20) 
+//Do this 40 times
+for i := 0; i < 40; i++ { 
+	strongest := s.GetStrongest(2)
 	s.Breed(strongest, 20)
 }
+//The average strength of the species should be much higher
 fmt.Println(s.AverageStrength())
 ```
