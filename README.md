@@ -24,7 +24,7 @@ createOrganism := func() Organism {
 s := NewSpecies(createOrganism, 20) 
 //Get the strongest 2
 strongest := s.GetStrongest(2) 
-//Bread the species from the 2 strongest viable members
+//Breed the species from the 2 strongest viable members
 s.Breed(strongest, 20) 
 //Do this 40 times
 for i := 0; i < 40; i++ { 
