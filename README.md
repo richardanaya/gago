@@ -22,6 +22,8 @@ createOrganism := func() Organism {
 }
 //Create a species of 20 members
 s := NewSpecies(createOrganism, 20) 
+//The average strength of the species should be fairly average at this point
+fmt.Println("Start:",s.AverageStrength())
 //Get the strongest 2
 strongest := s.GetStrongest(2) 
 //Breed the species from the 2 strongest viable members
@@ -32,7 +34,7 @@ for i := 0; i < 40; i++ {
 	s.Breed(strongest, 20)
 }
 //The average strength of the species should be much higher
-fmt.Println(s.AverageStrength())
+fmt.Println("End:",s.AverageStrength())
 ```
 
 ##TODO
