@@ -36,5 +36,5 @@ fmt.Println(s.AverageStrength())
 ```
 
 ##TODO
-* Implement speciated population growth of a population of multiple species
+* Implement speciated population growth of a population of multiple species using goroutines
 * Better control over configuration values
