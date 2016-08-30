@@ -34,3 +34,7 @@ for i := 0; i < 40; i++ {
 //The average strength of the species should be much higher
 fmt.Println(s.AverageStrength())
 ```
+
+##TODO
+* Implement speciated population growth of a population of multiple species
+* Better control over configuration values
