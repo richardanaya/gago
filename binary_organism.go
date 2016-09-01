@@ -1,6 +1,9 @@
 package gago
 
-import "math/rand"
+import (
+	"math"
+	"math/rand"
+)
 
 // BinaryOrganism - A simple organism represented by 1s and 0s
 type BinaryOrganism struct {
@@ -50,6 +53,24 @@ func (o *BinaryOrganism) Strength() int {
 		}
 	}
 	return strength
+}
+
+// Similarity - The similarity of one organism to another from 0 to 1.0
+func (o *BinaryOrganism) Similarity(other interface{}) float64 {
+	binaryOther := other.(*BinaryOrganism)
+	var myLen = float64(len(o.dna))
+	var otherLen = float64(len(binaryOther.dna))
+
+	maxLen := math.Max(myLen, otherLen)
+	minLen := math.Min(myLen, otherLen)
+	similarGenes := 0.0
+	for i := 0.0; i < minLen; i++ {
+		if string(o.dna[int(i)]) == string(binaryOther.dna[int(i)]) {
+			similarGenes++
+		}
+	}
+
+	return similarGenes / maxLen
 }
 
 // Mate - Create a new BinaryOrganism from mating with another

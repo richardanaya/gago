@@ -4,5 +4,7 @@ package gago
 type Organism interface {
 	Mutate()
 	Strength() int
+	Similarity(other interface{}) float64
 	Mate(mate interface{}) Organism
+	String() string
 }

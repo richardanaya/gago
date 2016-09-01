@@ -54,6 +54,11 @@ func (s *Species) AverageStrength() int {
 	return avg / len(s.members)
 }
 
+// Strongest - Get the strongest member of the species
+func (s *Species) Strongest() Organism {
+	return s.GetStrongest(1)[0]
+}
+
 // Breed - Breed the species from a number of viable organisms
 func (s *Species) Breed(viable Organisms, size int) {
 	newMembers := Organisms{}

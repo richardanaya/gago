@@ -1,7 +1,6 @@
 package gago
 
 import (
-	"fmt"
 	"math/rand"
 	"testing"
 )
@@ -33,6 +32,17 @@ func TestStrengthBinaryOrganism(t *testing.T) {
 	o.Mutate()
 	expected := 12
 	result := o.Strength()
+	if result != expected {
+		t.Error("Expected: ", expected, " Result: ", result)
+	}
+}
+
+func TestSimilarityBinaryOrganism(t *testing.T) {
+	rand.Seed(1)
+	a := NewBinaryOrganism()
+	b := NewBinaryOrganism()
+	expected := 0.55
+	result := a.Similarity(b)
 	if result != expected {
 		t.Error("Expected: ", expected, " Result: ", result)
 	}
@@ -85,13 +95,22 @@ func TestSpeciesBreed(t *testing.T) {
 		return NewBinaryOrganism()
 	}
 	s := NewSpecies(create, 20)
-	fmt.Println(s.AverageStrength())
 	strongest := s.GetStrongest(2)
 	s.Breed(strongest, 20)
-	fmt.Println(s.AverageStrength())
 	for i := 0; i < 40; i++ {
 		strongest = s.GetStrongest(2)
 		s.Breed(strongest, 20)
-		fmt.Println(s.AverageStrength())
+	}
+}
+
+func TestPopulation(t *testing.T) {
+	rand.Seed(1)
+	create := func() Organism {
+		return NewBinaryOrganism()
+	}
+	p := NewPopulation(create, 20)
+
+	if len(p.species) <= 1 {
+		t.Error("Population should have created more than one species")
 	}
 }
