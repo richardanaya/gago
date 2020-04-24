@@ -1,7 +1,7 @@
 # gago
 A genetics algorithm library with speciation written in Go
 
-#Example
+# Example
 
 In order to use gago, all you need to do is implement an structure that implements the Organism interface
 
@@ -37,6 +37,6 @@ for i := 0; i < 40; i++ {
 fmt.Println("End:",s.AverageStrength())
 ```
 
-##TODO
+# TODO
 * Implement speciated population growth of a population of multiple species using goroutines
 * Better control over configuration values
